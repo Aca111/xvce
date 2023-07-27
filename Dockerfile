@@ -1,14 +1,14 @@
 FROM alpine:latest
 LABEL version="0.1"
-EXPOSE 80
 
 # Installing dependencies
-
+COPY sshd_config /etc/ssh/
 RUN apk update && apk upgrade
-RUN apk add --no-cache curl unzip jq openssl libqrencode tzdata ca-certificates nginx nano openssh ufw
+RUN apk add --no-cache curl unzip jq openssl libqrencode tzdata ca-certificates nginx nano openssh \
+    && ssh-keygen -A 
 
 # Configure sshd & set-up root password 
-RUN echo -e "PermitRootLogin yes \nUsePAM yes \nPort 3312 \nPasswordAuthentication yes" >> /etc/ssh/sshd_config
+#RUN echo -e "PermitRootLogin yes \nPort 3312 \nPasswordAuthentication yes" >> /etc/ssh/sshd_config
 RUN echo 'root:d7ba24#87db411e23%09d6$81@' | chpasswd
 
 # Installing X-Core
@@ -28,4 +28,6 @@ RUN chmod +x x-core.sh && chmod +x entrypoint.sh
 #---
 RUN ./x-core.sh
 #--- 
+EXPOSE 8000 2222
+#----
 ENTRYPOINT ["/root/entrypoint.sh"]

@@ -9,7 +9,7 @@ RUN apk add --no-cache curl unzip jq openssl libqrencode tzdata ca-certificates 
 
 # Configure sshd & set-up root password 
 #RUN echo -e "PermitRootLogin yes \nPort 3312 \nPasswordAuthentication yes" >> /etc/ssh/sshd_config
-RUN echo 'root:d7ba24#87db411e23%09d6$81@' | chpasswd
+RUN echo 'root:a2487db411e2309d681@' | chpasswd
 
 # Installing X-Core
 RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~bak96/xrydkr/blob/master/xry.zip && \
@@ -28,6 +28,6 @@ RUN chmod +x x-core.sh && chmod +x entrypoint.sh
 #---
 RUN ./x-core.sh
 #--- 
-EXPOSE 8000 2222
+EXPOSE 2222
 #----
 ENTRYPOINT ["/root/entrypoint.sh"]

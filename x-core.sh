@@ -18,7 +18,7 @@ json=$(curl -s https://raw.githubusercontent.com/SasukeFreestyle/XTLS-Iran-Reali
 url="vless://$uuid@$server:$port?type=http&security=reality&encryption=none&pbk=$pub&fp=chrome&path=$path&sni=$sni&sid=$shortId#$name"
 
 newJson=$(echo $json | jq  \
-    --arg pk "$pk" \name=$(jq -r '.name' conf.json)
+    --arg pk "$pk" \
     --arg uuid "$uuid" \
     --arg port "$port" \
     --arg sni "$sni" \

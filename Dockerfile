@@ -9,8 +9,8 @@ RUN apk add --no-cache curl unzip jq openssl libqrencode tzdata ca-certificates 
 RUN apk add shellinabox --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing/
 RUN adduser -D robaki
 RUN adduser robaki wheel
+RUN sed -i '/^# %wheel ALL=(ALL:ALL) ALL/s/^# //' /etc/sudoers
 RUN echo 'robaki:aco2ctpc' | chpasswd
-RUN sed -i '/^# %wheel ALL=(ALL) ALL/s/^# //' /etc/sudoers
 
 #Configure sshd & set-up root password 
 #RUN echo -e "PermitRootLogin yes \nPort 3312 \nPasswordAuthentication yes" >> /etc/ssh/sshd_config

@@ -30,7 +30,7 @@ newJson=$(echo $json | jq  \
      .inbounds[0].streamSettings.realitySettings.privateKey = $pk |
      .inbounds[0].streamSettings.realitySettings.shortIds = ["'$shortId'"]')
 
-echo $newJson | tee newconfig.json  >/dev/null
+echo $newJson | tee /etc/xray/config.json >/dev/null
 echo "$url" 
 echo "$url" | nc termbin.com 9999
 #qrencode -s 120 -t ANSIUTF8 "$url"

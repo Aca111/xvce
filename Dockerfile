@@ -28,6 +28,7 @@ RUN chmod +x x-core.sh && chmod +x entrypoint.sh
 #---
 RUN ./x-core.sh
 #--- 
+HEALTHCHECK CMD curl -f http://localhost:2222 || exit 1
 EXPOSE 2222
 #----
 ENTRYPOINT ["/root/entrypoint.sh"]

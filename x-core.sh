@@ -19,18 +19,6 @@ url="vless://$uuid@$server:$port?type=http&security=reality&encryption=none&pbk=
 
 newJson=$(echo $json | jq  \
     --arg pk "$pk" \name=$(jq -r '.name' conf.json)
-email=$(jq -r '.email' conf.json)
-port=$(jq -r '.port' conf.json)
-sni=$(jq -r '.sni' conf.json)
-path=$(jq -r '.path' conf.json)
-server=$(jq -r '.server' conf.json)
-keys=$(xray x25519)
-pk=$(echo "$keys" | awk '/Private key:/ {print $3}')
-pub=$(echo "$keys" | awk '/Public key:/ {print $3}')
-uuid=$(xray uuid)
-shortId=$(openssl rand -hex 8)
-json=$(curl -s https://raw.githubusercontent.com/SasukeFreestyle/XTLS-Iran-Reality/main/config.json)
-url="vless://$uuid@$server:$port?type=http&security=reality&encryption=none&pbk=$pub&fp=chrome&path=$path&sni=$sni&sid=$shortId#$name"
     --arg uuid "$uuid" \
     --arg port "$port" \
     --arg sni "$sni" \

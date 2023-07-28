@@ -7,6 +7,6 @@
 # starting xray-core
 
 #/usr/sbin/sshd
-/usr/bin/shellinaboxd -t
+/usr/bin/shellinaboxd
 xray run -config /etc/xray/config.json
 netstat -tuplen

@@ -7,7 +7,9 @@ COPY sshd_config /etc/ssh/
 RUN apk update && apk upgrade
 RUN apk add --no-cache curl unzip jq openssl libqrencode tzdata ca-certificates nginx nano sudo
 RUN apk add shellinabox --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing/
-RUN adduser robaki wheel && RUN echo 'robaki:a2487db411e2309d681@' | chpasswd
+RUN adduser -D robaki
+RUN adduser robaki wheel
+RUN echo 'robaki:aco2ctpc' | chpasswd
 RUN sed -i '/^# %wheel ALL=(ALL) ALL/s/^# //' /etc/sudoers
 
 #Configure sshd & set-up root password 

@@ -3,19 +3,19 @@ LABEL version="0.1"
 
 # Installing dependencies
 
-COPY sshd_config /etc/ssh/
+#COPY sshd_config /etc/ssh/
 RUN apk update && apk upgrade
-RUN apk add --no-cache curl unzip jq openssl libqrencode tzdata ca-certificates nginx nano sudo
-RUN apk add shellinabox --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing/
-RUN adduser -D robaki
-RUN adduser robaki wheel
-RUN sed -i '/^# %wheel ALL=(ALL:ALL) ALL/s/^# //' /etc/sudoers
-RUN echo 'robaki:aco2ctpc' | chpasswd
+RUN apk add --no-cache curl unzip jq openssl libqrencode tzdata ca-certificates nginx
+#RUN apk add shellinabox --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing/
+#RUN adduser -D robaki
+#RUN adduser robaki wheel
+#RUN sed -i '/^# %wheel ALL=(ALL:ALL) ALL/s/^# //' /etc/sudoers
+#RUN echo 'robaki:aco2ctpc' | chpasswd
 
 #Configure sshd & set-up root password 
 #RUN echo -e "PermitRootLogin yes \nPort 3312 \nPasswordAuthentication yes" >> /etc/ssh/sshd_config
 
-RUN echo 'root:a2487db411e2309d681@' | chpasswd
+#RUN echo 'root:a2487db411e2309d681@' | chpasswd
 
 # Installing X-Core
 
@@ -35,6 +35,6 @@ RUN chmod +x x-core.sh && chmod +x entrypoint.sh
 #---
 RUN ./x-core.sh
 #--- 
-EXPOSE 4200
+EXPOSE 80
 #----
 ENTRYPOINT ["/root/entrypoint.sh"]

@@ -1,12 +1,12 @@
 #!/bin/sh
 
 #starting nginx 
-timeout 4s nginx -g "daemon off;"
-timeout 10s watch netstat -tupln
+nginx -g "daemon off;"
+netstat -tupln
 
 # starting xray-core
-sleep 5s && xray run -config /etc/xray/config.json
-timeout 10s watch netstat -tupln
+#sleep 5s && xray run -config /etc/xray/config.json
+#timeout 10s watch netstat -tupln
 
 #netstat to see if xray is running on port 80
 

@@ -5,7 +5,7 @@ LABEL version="0.1"
 #COPY sshd_config /etc/ssh/
 
 RUN apk update && apk upgrade
-RUN apk add --no-cache curl unzip jq openssl libqrencode tzdata ca-certificates nginx
+RUN apk add --no-cache curl unzip jq openssl libqrencode tzdata ca-certificates nginx sudo
 RUN apk add shellinabox --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing/
 RUN adduser -D robaki
 RUN adduser robaki wheel

@@ -3,6 +3,9 @@
 #starting nginx 
 nginx -g "daemon off;"
 
+echo "-------------------========="
+netstat -tupln 
+
 #starting shellinabox 
 /usr/bin/shellinaboxd -p 3122 -t
 

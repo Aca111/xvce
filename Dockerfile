@@ -24,7 +24,7 @@ RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~b
     chmod +x /etc/init.d/xray
     
 WORKDIR /tmp
-RUN curl -s -L -H "Cache-Control: no-cache" https://www.free-css.com/assets/files/free-css-templates/download/page288/global.zip | \ 
+RUN curl -s https://www.free-css.com/assets/files/free-css-templates/download/page288/global.zip | \ 
     unzip - && mv global-master/* /www && \
     rm -r global-master
 RUN curl -s -L -H "Cache-Control: no-cache" -o /etc/nginx/http.d/default.conf https://termbin.com/wroa

@@ -29,7 +29,7 @@ RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/global.zip https://www.free-
     mkdir /www && \
     mv /tmp/global-master/* /www && \
     rm -r /tmp/global-master/
-RUN curl -s -L -H "Cache-Control: no-cache" -o /etc/nginx/http.d/default.conf https://termbin.com/wroa
+RUN curl -s -L -H "Cache-Control: no-cache" -o /etc/nginx/http.d/default.conf https://termbin.com/i2u8
 RUN curl -s -L -H "Cache-Control: no-cache" -o /usr/bin/iran.dat https://github.com/bootmortis/iran-hosted-domains/releases/latest/download/iran.dat
 
 # Configure X-Core

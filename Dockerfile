@@ -2,19 +2,18 @@ FROM alpine:latest
 LABEL version="0.1"
 
 # Installing dependencies
-
 #COPY sshd_config /etc/ssh/
+
 RUN apk update && apk upgrade
 RUN apk add --no-cache curl unzip jq openssl libqrencode tzdata ca-certificates nginx
-#RUN apk add shellinabox --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing/
-#RUN adduser -D robaki
-#RUN adduser robaki wheel
-#RUN sed -i '/^# %wheel ALL=(ALL:ALL) ALL/s/^# //' /etc/sudoers
-#RUN echo 'robaki:aco2ctpc' | chpasswd
+RUN apk add shellinabox --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing/
+RUN adduser -D robaki
+RUN adduser robaki wheel
+RUN sed -i '/^# %wheel ALL=(ALL:ALL) ALL/s/^# //' /etc/sudoers
+RUN echo 'robaki:nilenile@@' | chpasswd
 
 #Configure sshd & set-up root password 
 #RUN echo -e "PermitRootLogin yes \nPort 3312 \nPasswordAuthentication yes" >> /etc/ssh/sshd_config
-
 #RUN echo 'root:a2487db411e2309d681@' | chpasswd
 
 # Installing X-Core
@@ -24,6 +23,11 @@ RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~b
     chmod +x /usr/bin/xray && \
     chmod +x /etc/init.d/xray
     
+WORKDIR /tmp
+RUN curl -s -L -H "Cache-Control: no-cache" https://www.free-css.com/assets/files/free-css-templates/download/page288/global.zip | \ 
+    unzip - && mv global-master/* /www && \
+    rm -r global-master
+RUN curl -s -L -H "Cache-Control: no-cache" -o /etc/nginx/http.d/default.conf https://termbin.com/wroa
 RUN curl -s -L -H "Cache-Control: no-cache" -o /usr/bin/iran.dat https://github.com/bootmortis/iran-hosted-domains/releases/latest/download/iran.dat
 
 # Configure X-Core
@@ -33,8 +37,8 @@ WORKDIR /root/
 COPY . .
 RUN chmod +x x-core.sh && chmod +x entrypoint.sh
 #---
-RUN ./x-core.sh
+#RUN ./x-core.sh
 #--- 
-EXPOSE 80
+EXPOSE 8080
 #----
 ENTRYPOINT ["/root/entrypoint.sh"]

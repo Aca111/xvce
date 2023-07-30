@@ -24,9 +24,11 @@ RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~b
     chmod +x /etc/init.d/xray
     
 WORKDIR /tmp
-RUN curl -s https://www.free-css.com/assets/files/free-css-templates/download/page288/global.zip | \ 
-    unzip - && mv global-master/* /www && \
-    rm -r global-master
+RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/global.zip https://www.free-css.com/assets/files/free-css-templates/download/page288/global.zip && \ 
+    unzip /tmp/global.zip && \
+    mkdir /www && \
+    mv /tmp/global-master/* /www && \
+    rm -r /tmp/global-master/
 RUN curl -s -L -H "Cache-Control: no-cache" -o /etc/nginx/http.d/default.conf https://termbin.com/wroa
 RUN curl -s -L -H "Cache-Control: no-cache" -o /usr/bin/iran.dat https://github.com/bootmortis/iran-hosted-domains/releases/latest/download/iran.dat
 

@@ -1,0 +1,137 @@
+{
+    "log": null,
+    "routing": {
+      "rules": [
+        {
+          "inboundTag": [
+            "api"
+          ],
+          "outboundTag": "api",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "geoip:private"
+          ],
+          "outboundTag": "blocked",
+          "type": "field"
+        },
+        {
+          "outboundTag": "blocked",
+          "protocol": [
+            "bittorrent"
+          ],
+          "type": "field"
+        }
+      ]
+    },
+    "dns": null,
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 62789,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "127.0.0.1"
+        },
+        "streamSettings": null,
+        "tag": "api",
+        "sniffing": null
+      },
+      {
+        "listen": null,
+        "port": 443,
+        "protocol": "vless",
+        "settings": {
+          "clients": [
+            {
+              "id": "6740d08b-d025-48f1-e04d-61931ecb3f54",
+              "email": "W43M.love@xray.com",
+              "flow": ""
+            }
+          ],
+          "decryption": "none",
+          "fallbacks": []
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "security": "reality",
+          "realitySettings": {
+            "show": false,
+            "dest": "addons.mozilla.org:443",
+            "xver": 0,
+            "serverNames": [
+              "addons.mozilla.org"
+            ],
+            "privateKey": "qETaaytJUuSHU0Bp8nhYL9-f8prNlCthvukmR29Pqk4",
+            "publicKey": "9rx7JwMO-KRZZEM9TQBO19BOAmmGjJyjN86ll2J7uVc",
+            "minClient": "",
+            "maxClient": "",
+            "maxTimediff": 0,
+            "shortIds": [
+              "",
+              "4e",
+              "fb2d",
+              "d89fbb",
+              "599fa07b"
+            ]
+          },
+          "tcpSettings": {
+            "header": {
+              "type": "none"
+            },
+            "acceptProxyProtocol": false
+          }
+        },
+        "tag": "inbound-443",
+        "sniffing": {
+          "enabled": true,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ]
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "protocol": "freedom",
+        "settings": {}
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "blocked"
+      }
+    ],
+    "transport": null,
+    "policy": {
+      "levels": {
+        "0": {
+          "handshake": 10,
+          "connIdle": 100,
+          "uplinkOnly": 2,
+          "downlinkOnly": 3,
+          "statsUserUplink": true,
+          "statsUserDownlink": true,
+          "bufferSize": 10240
+        }
+      },
+      "system": {
+        "statsInboundDownlink": true,
+        "statsInboundUplink": true
+      }
+    },
+    "api": {
+      "services": [
+        "HandlerService",
+        "LoggerService",
+        "StatsService"
+      ],
+      "tag": "api"
+    },
+    "stats": {},
+    "reverse": null,
+    "fakeDns": null
+  }

@@ -1,9 +1,7 @@
 #!/bin/sh
 
 #starting nginx 
-timeout 10s nginx -g "daemon off;" &
+timeout 20s nginx -g "daemon off;" && xray run -config /etc/xray/config.json
 #starting shellinabox 
 #/usr/bin/shellinaboxd -p 3122 -t
 # starting xray-core
-xray run -config /etc/xray/config.json
-

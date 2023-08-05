@@ -1,8 +1,8 @@
-{
-    "name": "server-config",
-    "email": "cabnxi@gmail.com",
-    "port": "80",
-    "sni": "yahoo.com",
-    "path": "%2F",
-    "server": "vncrepo-anpt7wiyy.b4a.run"
-}
+// {
+//     "name": "server-config",
+//     "email": "cabnxi@gmail.com",
+//     "port": "80",
+//     "sni": "yahoo.com",
+//     "path": "%2F",
+//     "server": "vncrepo-anpt7wiyy.b4a.run"
+// }

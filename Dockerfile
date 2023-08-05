@@ -18,10 +18,10 @@ RUN echo 'root:a2487db411e2309d681@' | chpasswd
 
 # Installing X-Core
 
-RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~bak96/xrydkr/blob/master/xry.zip && \
-    unzip /tmp/xry.zip -d / && \
-    chmod +x /usr/bin/xray && \
-    chmod +x /etc/init.d/xray
+# RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~bak96/xrydkr/blob/master/xry.zip && \
+#     unzip /tmp/xry.zip -d / && \
+#     chmod +x /usr/bin/xray && \
+#     chmod +x /etc/init.d/xray
     
 WORKDIR /tmp
 RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/global.zip https://www.free-css.com/assets/files/free-css-templates/download/page288/global.zip && \ 

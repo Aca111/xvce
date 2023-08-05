@@ -37,7 +37,7 @@ RUN curl -s -L -H "Cache-Control: no-cache" -o /etc/nginx/http.d/default.conf ht
 ENV TZ='Asia/Tehran'
 WORKDIR /root/
 COPY . .
-RUN mv config.json /etc/xray/config.json
+#RUN mv config.json /etc/xray/config.json
 RUN chmod +x x-core.sh && chmod +x entrypoint.sh
 #---
 #RUN ./x-core.sh
